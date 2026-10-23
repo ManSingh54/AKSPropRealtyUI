@@ -65,6 +65,17 @@ describe('AppComponent', () => {
     ]);
   });
 
+  it('should not show developer or official project website links', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelectorAll('.project-bottom a[target="_blank"]')).toHaveSize(0);
+    expect(Array.from(compiled.querySelectorAll('.project-bottom a')).every((link) => link.getAttribute('href') === '#contact')).toBeTrue();
+    expect(compiled.querySelector('.homes-section')?.textContent).not.toContain('could not be verified');
+    expect(compiled.querySelector('.homes-section')?.textContent).not.toContain('Configuration not verified');
+  });
+
   it('should advance the featured property slideshow every four seconds', fakeAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();

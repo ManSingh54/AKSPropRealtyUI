@@ -8,7 +8,7 @@
 		<a class="wordmark" href="#home" aria-label="AKS PropRealty home">
 			<img class="brand-logo" src="assets/Logo1.png" alt="AKS PropRealty">
 		</a>
-		<button class="menu-toggle" type="button" (click)="menuOpen = !menuOpen" [attr.aria-expanded]="menuOpen" aria-label="Toggle navigation">
+		<button class="menu-toggle" type="button" (click)="menuOpen = !menuOpen" [class.is-open]="menuOpen" [attr.aria-expanded]="menuOpen" aria-label="Toggle navigation">
 			<span></span><span></span><span></span>
 		</button>
 		<nav class="main-nav" [class.is-open]="menuOpen" aria-label="Main navigation">
@@ -79,10 +79,7 @@
 									<p class="project-developer">{{ project.developer }}</p>
 									<p class="project-description">{{ project.description }}</p>
 									<div class="project-meta"><span>{{ project.configuration }}</span></div>
-									@if (project.verificationNote) {
-										<p class="verification-note">{{ project.verificationNote }}</p>
-									}
-									<div class="project-bottom"><a [href]="project.link" target="_blank" rel="noopener noreferrer">{{ project.linkLabel }} <span aria-hidden="true">↗</span></a><a href="#contact">Enquire <span aria-hidden="true">→</span></a></div>
+									<div class="project-bottom"><a href="#contact">Enquire <span aria-hidden="true">→</span></a></div>
 								</div>
 							</article>
 						}
