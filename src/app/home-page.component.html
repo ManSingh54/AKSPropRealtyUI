@@ -1,0 +1,131 @@
+<div class="site-shell">
+	<div class="announcement">
+		<span>Property guidance across Noida and Yamuna Expressway</span>
+		<a href="tel:+918505801314">Call our property desk <span aria-hidden="true">↗</span></a>
+	</div>
+
+	<header class="site-header">
+		<a class="wordmark" href="#home" aria-label="AKS PropRealty home">
+			<img class="brand-logo" src="/assets/Logo1.png" alt="AKS PropRealty">
+		</a>
+		<button class="menu-toggle" type="button" (click)="menuOpen = !menuOpen" [attr.aria-expanded]="menuOpen" aria-label="Toggle navigation">
+			<span></span><span></span><span></span>
+		</button>
+		<nav class="main-nav" [class.is-open]="menuOpen" aria-label="Main navigation">
+			<a href="#home" (click)="menuOpen = false">Home</a>
+			<a href="#homes" (click)="menuOpen = false">Properties</a>
+			<a href="#about" (click)="menuOpen = false">About us</a>
+			<a href="#services" (click)="menuOpen = false">Why AKS</a>
+			<a href="#contact" (click)="menuOpen = false">Contact</a>
+		</nav>
+		<a class="header-cta" href="#contact">Enquire now <span aria-hidden="true">↗</span></a>
+	</header>
+
+	<main id="home">
+		<section class="hero" [class.brand-hero]="activeHeroIndex === 0" aria-labelledby="hero-title">
+			@for (slide of heroSlides; track slide.title; let index = $index) {
+				<img class="hero-image" [class.is-active]="activeHeroIndex === index" [class.brand-slide]="index === 0" [src]="slide.image" [alt]="slide.imageAlt" [attr.aria-hidden]="activeHeroIndex !== index" [attr.fetchpriority]="index === 0 ? 'high' : 'auto'">
+			}
+			<div class="hero-overlay"></div>
+			<div class="hero-content">
+				<p class="eyebrow"><span></span> FIND A HOME THAT FEELS RIGHT</p>
+				<h1 id="hero-title">Welcome to a better<br><em>way home.</em></h1>
+				<p>Explore residential properties across Noida and the Yamuna Expressway with clear, local guidance from AKS PropRealty.</p>
+				<a class="hero-link" href="#homes">Explore properties <span aria-hidden="true">↓</span></a>
+			</div>
+			<div class="hero-caption" aria-live="off"><span>REPRESENTATIVE PHOTOGRAPHY</span><strong>{{ activeHeroSlide.title }}</strong><span>Explore homes across Noida and Yamuna Expressway</span></div>
+			@if (activeHeroIndex === 0) {
+				<div class="brand-banner-contact">
+					<a href="tel:+918505801314">Call +91 85058 01314</a>
+					<a href="#homes">Explore properties <span aria-hidden="true">↗</span></a>
+				</div>
+			}
+			<div class="hero-controls" aria-label="Featured property slideshow controls">
+				<button type="button" (click)="showHeroSlide(activeHeroIndex - 1)" aria-label="Previous featured property">‹</button>
+				@for (slide of heroSlides; track slide.title; let index = $index) {
+					<button class="hero-indicator" type="button" [class.is-active]="activeHeroIndex === index" [attr.aria-label]="'Show ' + slide.title" [attr.aria-pressed]="activeHeroIndex === index" (click)="showHeroSlide(index)"></button>
+				}
+				<button type="button" (click)="showHeroSlide(activeHeroIndex + 1)" aria-label="Next featured property">›</button>
+				<button class="hero-pause" type="button" (click)="toggleHeroSlideshow()" [attr.aria-label]="heroPaused ? 'Play featured property slideshow' : 'Pause featured property slideshow'">{{ heroPaused ? '▶' : 'Ⅱ' }}</button>
+			</div>
+			<div class="hero-count"><span>{{ (activeHeroIndex + 1).toString().padStart(2, '0') }}</span> / {{ heroSlides.length.toString().padStart(2, '0') }}</div>
+		</section>
+
+		<section class="search-section" aria-label="Search available homes">
+			<div class="search-heading"><span class="search-symbol" aria-hidden="true">⌕</span><div><strong>Find your property</strong><span>Choose what works for you</span></div></div>
+			<label class="search-field"><span>LOCATION</span><select [(ngModel)]="selectedLocation" aria-label="Choose a location"><option value="All locations">All locations</option>@for (location of locations; track location) {<option [value]="location">{{ location }}</option>}</select></label>
+			<label class="search-field"><span>BEDROOMS</span><select [(ngModel)]="selectedLayout" aria-label="Choose bedroom count"><option value="Any layout">Any bedrooms</option><option value="3 BHK">3 BHK</option><option value="4 BHK">4 BHK</option></select></label>
+			<button class="search-button" type="button" (click)="searchHomes()">Search properties <span aria-hidden="true">↗</span></button>
+		</section>
+
+		<section class="homes-section section-wrap" id="homes" aria-labelledby="homes-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">EXPLORE OUR SELECTION</p><h2 id="homes-title">Find a place to <em>call home.</em></h2></div>
+				<a class="section-link" href="#contact">{{ filteredProjects.length }} projects across 3 locations <span aria-hidden="true">↗</span></a>
+			</div>
+			@for (group of filteredProjectGroups; track group.location) {
+				<section class="location-group" [attr.aria-label]="group.location + ' projects'">
+					<div class="location-heading"><h3>{{ group.location }}</h3><span>{{ group.projects.length }} projects</span></div>
+					<div class="project-grid">
+						@for (project of group.projects; track project.name) {
+							<article class="project-card">
+								<div class="project-image">
+									<img [src]="project.image" [alt]="project.name + ' representative residential image'" loading="lazy">
+									<span class="project-tag">REPRESENTATIVE IMAGE</span>
+								</div>
+								<div class="project-info">
+									<p class="project-area">{{ project.area }}</p>
+									<div class="project-title-row"><h4>{{ project.name }}</h4></div>
+									<p class="project-developer">{{ project.developer }}</p>
+									<p class="project-description">{{ project.description }}</p>
+									<div class="project-meta"><span>{{ project.configuration }}</span></div>
+									@if (project.verificationNote) {
+										<p class="verification-note">{{ project.verificationNote }}</p>
+									}
+									<div class="project-bottom"><a [href]="project.link" target="_blank" rel="noopener noreferrer">{{ project.linkLabel }} <span aria-hidden="true">↗</span></a><a href="#contact">Enquire <span aria-hidden="true">→</span></a></div>
+								</div>
+							</article>
+						}
+					</div>
+				</section>
+			} @empty {
+				<div class="empty-state"><strong>No exact matches found.</strong><span>Try another location or bedroom count.</span><button type="button" (click)="clearSearch()">Clear filters</button></div>
+			}
+			<p class="source-note">Project descriptions are summarized from developer pages where available. Images are representative, not project photographs. Configurations, location details, approvals and availability may change; verify them directly with the developer before making a decision.</p>
+		</section>
+
+		<section class="about-section" id="about" aria-labelledby="about-title">
+			<div class="about-image"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85" alt="Representative photograph of a modern residential community" loading="lazy"><span>YOUR NEXT CHAPTER STARTS HERE</span></div>
+			<div class="about-copy"><p class="eyebrow">A LOCAL PARTNER FOR YOUR PROPERTY SEARCH</p><h2 id="about-title">A little more clarity.<br><em>A lot more confidence.</em></h2><p>Finding a home is a big decision. We help you compare your options across Noida Extension, Sector 150 and Yamuna Expressway.</p><a class="outline-link" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></div>
+		</section>
+
+		<section class="services-section" id="services" aria-labelledby="services-title">
+			<div class="section-heading">
+				<div><p class="eyebrow">HERE WHEN YOU NEED US</p><h2 id="services-title">Property search, <em>made simpler.</em></h2></div>
+				<p class="services-intro">From the first shortlist to a site visit, get practical support at every step of your search.</p>
+			</div>
+			<div class="service-grid">
+				<article><span>01</span><h3>Understand your needs</h3><p>Start with your preferred location, budget, and the kind of home you have in mind.</p></article>
+				<article><span>02</span><h3>Compare your options</h3><p>Review relevant homes and their key details before deciding which ones to explore.</p></article>
+				<article><span>03</span><h3>Plan your next step</h3><p>Get help arranging a conversation or visit and move forward at your own pace.</p></article>
+			</div>
+		</section>
+
+		<section class="contact-section" id="contact" aria-labelledby="contact-title">
+			<div class="contact-copy"><p class="eyebrow">LET'S TALK PROPERTY</p><h2 id="contact-title">Looking for a home<br>in <em>Noida NCR?</em></h2><p>Share your details and our team can help you explore the options.</p><a href="tel:+919811002135" class="contact-phone">+91 98110 2135 <span aria-hidden="true">↗</span></a></div>
+			<form class="contact-form" (submit)="submitInquiry($event)">
+				<label>Your name<input name="name" autocomplete="name" placeholder="Enter your name" required></label>
+				<label>Phone number<input name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+() -]{10,}" placeholder="+91 98110 2135" required></label>
+				<button class="form-button" type="submit">Request a call <span aria-hidden="true">↗</span></button>
+				<p class="form-feedback" aria-live="polite">{{ inquiryMessage || 'Your details are not submitted online yet. Call us to connect.' }}</p>
+			</form>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<a class="wordmark footer-brand" href="#home" aria-label="AKS PropRealty home"><img class="brand-logo" src="/assets/Logo1.png" alt="AKS PropRealty"></a>
+		<p>Local guidance for your next move.</p>
+		<nav aria-label="Footer navigation"><a href="#homes">Properties</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+		<span>© 2026 AKS PropRealty</span>
+	</footer>
+</div>
