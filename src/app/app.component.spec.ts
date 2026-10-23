@@ -33,9 +33,9 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     const compiled = fixture.nativeElement as HTMLElement;
 
-    expect(app.heroSlides[0].image).toBe('/assets/Home-Page-Image.jpeg');
-    expect(compiled.querySelector('.hero-image.is-active')?.getAttribute('src')).toBe('/assets/Home-Page-Image.jpeg');
-    expect(compiled.querySelector('.site-header .brand-logo')?.getAttribute('src')).toBe('/assets/Logo1.png');
+    expect(app.heroSlides[0].image).toBe('assets/Home-Page-Image.jpeg');
+    expect(compiled.querySelector('.hero-image.is-active')?.getAttribute('src')).toBe('assets/Home-Page-Image.jpeg');
+    expect(compiled.querySelector('.site-header .brand-logo')?.getAttribute('src')).toBe('assets/Logo1.png');
   });
 
   it('should filter homes by their listed location', () => {

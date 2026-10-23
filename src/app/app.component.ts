@@ -19,7 +19,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private heroTimer?: ReturnType<typeof setInterval>;
 
   readonly heroSlides = [
-    { title: 'AKS PropRealty', image: '/assets/Home-Page-Image.jpeg', imageAlt: 'AKS PropRealty homepage banner featuring residential properties' },
+    { title: 'AKS PropRealty', image: 'assets/Home-Page-Image.jpeg', imageAlt: 'AKS PropRealty homepage banner featuring residential properties' },
     { title: 'A home with room to breathe', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=85', imageAlt: 'High-resolution photograph of a contemporary home exterior' },
     { title: 'A place to unwind', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=85', imageAlt: 'High-resolution photograph of a modern residential home' },
     { title: 'Made for everyday living', image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=2200&q=85', imageAlt: 'High-resolution photograph of a thoughtfully designed home interior' },
