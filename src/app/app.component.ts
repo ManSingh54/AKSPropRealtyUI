@@ -119,6 +119,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   submitInquiry(event: Event) {
     event.preventDefault();
-    this.inquiryMessage = 'Your details were not sent. Please call +91 8505801314 to connect.';
-  }
+    window.open(
+    'https://wa.me/919811002135?text=Hello%20AKS%20PropRealty%2C%20I%20am%20interested%20in%20your%20projects',
+    '_blank'
+  );
+    }
 }
