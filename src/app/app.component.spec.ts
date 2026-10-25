@@ -76,6 +76,20 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('.homes-section')?.textContent).not.toContain('Configuration not verified');
   });
 
+  it('should show fixed WhatsApp and Contact Us actions', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const actions = compiled.querySelectorAll('.floating-contact-actions a');
+
+    expect(actions).toHaveSize(2);
+    expect(actions[0].getAttribute('href')).toContain('https://wa.me/919811002135');
+    expect(actions[0].getAttribute('target')).toBe('_blank');
+    expect(actions[1].getAttribute('href')).toBe('#contact');
+    expect(actions[0].classList.contains('whatsapp-action')).toBeTrue();
+    expect(actions[1].classList.contains('email-action')).toBeTrue();
+  });
+
   it('should advance the featured property slideshow every four seconds', fakeAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();

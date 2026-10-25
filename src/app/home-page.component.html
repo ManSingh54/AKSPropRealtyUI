@@ -63,6 +63,14 @@
 				<div><p class="eyebrow">EXPLORE OUR SELECTION</p><h2 id="homes-title">Find a place to <em>call home.</em></h2></div>
 				<a class="section-link" href="#contact">{{ filteredProjects.length }} projects across 3 locations <span aria-hidden="true">↗</span></a>
 			</div>
+			<div class="floating-contact-actions" aria-label="Contact AKS PropRealty">
+				<a class="floating-contact-action whatsapp-action" href="https://wa.me/919811002135?text=Hello%20AKS%20PropRealty%2C%20I%20am%20interested%20in%20your%20projects" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .1 5.4.1 12c0 2.1.6 4.2 1.7 6L0 24l6.2-1.6a12 12 0 0 0 5.9 1.5h.1c6.6 0 12-5.4 12-12 0-3.2-1.3-6.2-3.7-8.4ZM12.1 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.3-.4a9.8 9.8 0 1 1 8.4 4.6Zm5.4-7.4c-.3-.2-1.7-.9-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.5-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.3 1 2.7 1.1 2.9c.2.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3Z"/></svg>
+				</a>
+				<a class="floating-contact-action email-action" href="#contact" aria-label="Contact us">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm9 8.2L20.5 7h-17L12 13.2Zm0 2.4L3 8.6V17h18V8.6l-9 7Z"/></svg>
+				</a>
+			</div>
 			@for (group of filteredProjectGroups; track group.location) {
 				<section class="location-group" [attr.aria-label]="group.location + ' projects'">
 					<div class="location-heading"><h3>{{ group.location }}</h3><span>{{ group.projects.length }} projects</span></div>

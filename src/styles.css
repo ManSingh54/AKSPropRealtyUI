@@ -53,6 +53,12 @@ a{color:inherit;text-decoration:none}
 .hero-controls .hero-pause{font-size:11px;margin-left:4px}
 .hero-count{position:absolute;right:7%;bottom:28px;font-size:9px;letter-spacing:.13em}
 .hero-count span{color:#f2c5c9;font-weight:700}
+.floating-contact-actions{position:fixed;right:14px;bottom:15px;z-index:1000;display:flex;flex-direction:column;gap:8px}
+.floating-contact-action{width:44px;height:44px;display:grid;place-items:center;border-radius:5px;box-shadow:0 3px 10px #0003;color:#fff;transition:filter .2s ease,transform .2s ease}
+.floating-contact-action:hover,.floating-contact-action:focus-visible{filter:brightness(.92);transform:translateY(-1px)}
+.floating-contact-action svg{width:24px;height:24px;fill:currentColor}
+.whatsapp-action{background:#25d366}
+.email-action{background:#ef4444}
 .search-section{position:relative;z-index:2;margin:-1px auto 0;width:min(1120px,86%);background:#fff;display:grid;grid-template-columns:1.2fr 1fr 1fr auto;align-items:center;padding:22px 25px;box-shadow:0 10px 35px #202b3b18;gap:18px}
 .search-heading{display:flex;align-items:center;gap:12px}
 .search-symbol{font:31px 'DM Serif Display',serif;color:var(--red)}
