@@ -1,34 +1,36 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { provideRouter } from '@angular/router';
+import { HomePageComponent } from './home-page.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [HomePageComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(HomePageComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it(`should have the 'AKSPropRealty' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(HomePageComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('AKSPropRealty');
   });
 
   it('should render the property search homepage', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(HomePageComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Welcome to a better');
   });
 
   it('should feature the supplied AKS homepage banner first', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(HomePageComponent);
     fixture.detectChanges();
     const app = fixture.componentInstance;
     const compiled = fixture.nativeElement as HTMLElement;
@@ -39,7 +41,7 @@ describe('AppComponent', () => {
   });
 
   it('should filter homes by their listed location', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(HomePageComponent);
     const app = fixture.componentInstance;
 
     app.selectedLocation = 'Noida Extension';
@@ -53,7 +55,7 @@ describe('AppComponent', () => {
   });
 
   it('should group all requested projects under the three selected locations', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(HomePageComponent);
     const app = fixture.componentInstance;
 
     expect(app.locations).toEqual(['Noida Extension', 'Sector 150 Noida Expressway', 'Yamuna Expressway']);
@@ -66,18 +68,21 @@ describe('AppComponent', () => {
   });
 
   it('should not show developer or official project website links', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(HomePageComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
 
     expect(compiled.querySelectorAll('.project-bottom a[target="_blank"]')).toHaveSize(0);
-    expect(Array.from(compiled.querySelectorAll('.project-bottom a')).every((link) => link.getAttribute('href') === '#contact')).toBeTrue();
+    const projectActions = Array.from(compiled.querySelectorAll('.project-bottom a'));
+    expect(projectActions).toHaveSize(24);
+    expect(projectActions.filter((link) => link.getAttribute('href')?.includes('/properties/'))).toHaveSize(12);
+    expect(projectActions.filter((link) => link.getAttribute('href')?.endsWith('#contact'))).toHaveSize(12);
     expect(compiled.querySelector('.homes-section')?.textContent).not.toContain('could not be verified');
     expect(compiled.querySelector('.homes-section')?.textContent).not.toContain('Configuration not verified');
   });
 
   it('should show fixed WhatsApp and Contact Us actions', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(HomePageComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     const actions = compiled.querySelectorAll('.floating-contact-actions a');
@@ -85,13 +90,13 @@ describe('AppComponent', () => {
     expect(actions).toHaveSize(2);
     expect(actions[0].getAttribute('href')).toContain('https://wa.me/919811002135');
     expect(actions[0].getAttribute('target')).toBe('_blank');
-    expect(actions[1].getAttribute('href')).toBe('#contact');
+    expect(actions[1].getAttribute('href')).toContain('contact');
     expect(actions[0].classList.contains('whatsapp-action')).toBeTrue();
     expect(actions[1].classList.contains('email-action')).toBeTrue();
   });
 
   it('should advance the featured property slideshow every four seconds', fakeAsync(() => {
-    const fixture = TestBed.createComponent(AppComponent);
+    const fixture = TestBed.createComponent(HomePageComponent);
     fixture.detectChanges();
 
     tick(4000);

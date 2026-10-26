@@ -5,20 +5,20 @@
 	</div>
 
 	<header class="site-header">
-		<a class="wordmark" href="#home" aria-label="AKS PropRealty home">
+		<a class="wordmark" href="#home" (click)="scrollToSection('home', $event)" aria-label="AKS PropRealty home">
 			<img class="brand-logo" src="assets/Logo1.png" alt="AKS PropRealty">
 		</a>
 		<button class="menu-toggle" type="button" (click)="menuOpen = !menuOpen" [class.is-open]="menuOpen" [attr.aria-expanded]="menuOpen" aria-label="Toggle navigation">
 			<span></span><span></span><span></span>
 		</button>
 		<nav class="main-nav" [class.is-open]="menuOpen" aria-label="Main navigation">
-			<a href="#home" (click)="menuOpen = false">Home</a>
-			<a href="#homes" (click)="menuOpen = false">Properties</a>
-			<a href="#about" (click)="menuOpen = false">About us</a>
-			<a href="#services" (click)="menuOpen = false">Why AKS</a>
-			<a href="#contact" (click)="menuOpen = false">Contact</a>
+			<a href="#home" (click)="scrollToSection('home', $event); menuOpen = false">Home</a>
+			<a href="#homes" (click)="scrollToSection('homes', $event); menuOpen = false">Properties</a>
+			<a href="#about" (click)="scrollToSection('about', $event); menuOpen = false">About us</a>
+			<a href="#services" (click)="scrollToSection('services', $event); menuOpen = false">Why AKS</a>
+			<a href="#contact" (click)="scrollToSection('contact', $event); menuOpen = false">Contact</a>
 		</nav>
-		<a class="header-cta" href="#contact">Enquire now <span aria-hidden="true">↗</span></a>
+		<a class="header-cta" href="#contact" (click)="scrollToSection('contact', $event)">Enquire now <span aria-hidden="true">↗</span></a>
 	</header>
 
 	<main id="home">
@@ -31,13 +31,13 @@
 				<p class="eyebrow"><span></span> FIND A HOME THAT FEELS RIGHT</p>
 				<h1 id="hero-title">Welcome to a better<br><em>way home.</em></h1>
 				<p>Explore residential properties across Noida and the Yamuna Expressway with clear, local guidance from AKS PropRealty.</p>
-				<a class="hero-link" href="#homes">Explore properties <span aria-hidden="true">↓</span></a>
+				<a class="hero-link" href="#homes" (click)="scrollToSection('homes', $event)">Explore properties <span aria-hidden="true">↓</span></a>
 			</div>
 			<div class="hero-caption" aria-live="off"><span>REPRESENTATIVE PHOTOGRAPHY</span><strong>{{ activeHeroSlide.title }}</strong><span>Explore homes across Noida and Yamuna Expressway</span></div>
 			@if (activeHeroIndex === 0) {
 				<div class="brand-banner-contact">
 					<a href="tel:+918505801314">Call +91 85058 01314</a>
-					<a href="#homes">Explore properties <span aria-hidden="true">↗</span></a>
+					<a href="#homes" (click)="scrollToSection('homes', $event)">Explore properties <span aria-hidden="true">↗</span></a>
 				</div>
 			}
 			<div class="hero-controls" aria-label="Featured property slideshow controls">
@@ -61,13 +61,13 @@
 		<section class="homes-section section-wrap" id="homes" aria-labelledby="homes-title">
 			<div class="section-heading">
 				<div><p class="eyebrow">EXPLORE OUR SELECTION</p><h2 id="homes-title">Find a place to <em>call home.</em></h2></div>
-				<a class="section-link" href="#contact">{{ filteredProjects.length }} projects across 3 locations <span aria-hidden="true">↗</span></a>
+				<a class="section-link" href="#contact" (click)="scrollToSection('contact', $event)">{{ filteredProjects.length }} projects across 3 locations <span aria-hidden="true">↗</span></a>
 			</div>
 			<div class="floating-contact-actions" aria-label="Contact AKS PropRealty">
 				<a class="floating-contact-action whatsapp-action" href="https://wa.me/919811002135?text=Hello%20AKS%20PropRealty%2C%20I%20am%20interested%20in%20your%20projects" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
 					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .1 5.4.1 12c0 2.1.6 4.2 1.7 6L0 24l6.2-1.6a12 12 0 0 0 5.9 1.5h.1c6.6 0 12-5.4 12-12 0-3.2-1.3-6.2-3.7-8.4ZM12.1 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.3-.4a9.8 9.8 0 1 1 8.4 4.6Zm5.4-7.4c-.3-.2-1.7-.9-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.5-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.3 1 2.7 1.1 2.9c.2.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3Z"/></svg>
 				</a>
-				<a class="floating-contact-action email-action" href="#contact" aria-label="Contact us">
+				<a class="floating-contact-action email-action" href="#contact" (click)="scrollToSection('contact', $event)" aria-label="Contact us">
 					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm9 8.2L20.5 7h-17L12 13.2Zm0 2.4L3 8.6V17h18V8.6l-9 7Z"/></svg>
 				</a>
 			</div>
@@ -77,17 +77,17 @@
 					<div class="project-grid">
 						@for (project of group.projects; track project.name) {
 							<article class="project-card">
-								<div class="project-image">
+								<a class="project-image" [routerLink]="['/properties', project.slug]" [attr.aria-label]="'View details for ' + project.name">
 									<img [src]="project.image" [alt]="project.name + ' representative residential image'" loading="lazy">
 									<span class="project-tag">REPRESENTATIVE IMAGE</span>
-								</div>
+								</a>
 								<div class="project-info">
 									<p class="project-area">{{ project.area }}</p>
-									<div class="project-title-row"><h4>{{ project.name }}</h4></div>
+									<div class="project-title-row"><h4><a [routerLink]="['/properties', project.slug]">{{ project.name }}</a></h4></div>
 									<p class="project-developer">{{ project.developer }}</p>
 									<p class="project-description">{{ project.description }}</p>
 									<div class="project-meta"><span>{{ project.configuration }}</span></div>
-									<div class="project-bottom"><a href="#contact">Enquire <span aria-hidden="true">→</span></a></div>
+									<div class="project-bottom"><a [routerLink]="['/properties', project.slug]">View details <span aria-hidden="true">→</span></a><a href="#contact" (click)="scrollToSection('contact', $event)">Enquire <span aria-hidden="true">→</span></a></div>
 								</div>
 							</article>
 						}
@@ -101,7 +101,7 @@
 
 		<section class="about-section" id="about" aria-labelledby="about-title">
 			<div class="about-image"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85" alt="Representative photograph of a modern residential community" loading="lazy"><span>YOUR NEXT CHAPTER STARTS HERE</span></div>
-			<div class="about-copy"><p class="eyebrow">A LOCAL PARTNER FOR YOUR PROPERTY SEARCH</p><h2 id="about-title">A little more clarity.<br><em>A lot more confidence.</em></h2><p>Finding a home is a big decision. We help you compare your options across Noida Extension, Sector 150 and Yamuna Expressway.</p><a class="outline-link" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></div>
+			<div class="about-copy"><p class="eyebrow">A LOCAL PARTNER FOR YOUR PROPERTY SEARCH</p><h2 id="about-title">A little more clarity.<br><em>A lot more confidence.</em></h2><p>Finding a home is a big decision. We help you compare your options across Noida Extension, Sector 150 and Yamuna Expressway.</p><a class="outline-link" href="#contact" (click)="scrollToSection('contact', $event)">Get in touch <span aria-hidden="true">↗</span></a></div>
 		</section>
 
 		<section class="services-section" id="services" aria-labelledby="services-title">
@@ -128,9 +128,9 @@
 	</main>
 
 	<footer class="site-footer">
-		<a class="wordmark footer-brand" href="#home" aria-label="AKS PropRealty home"><img class="brand-logo" src="assets/Logo1.png" alt="AKS PropRealty"></a>
+		<a class="wordmark footer-brand" href="#home" (click)="scrollToSection('home', $event)" aria-label="AKS PropRealty home"><img class="brand-logo" src="assets/Logo1.png" alt="AKS PropRealty"></a>
 		<p>Local guidance for your next move.</p>
-		<nav aria-label="Footer navigation"><a href="#homes">Properties</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+		<nav aria-label="Footer navigation"><a href="#homes" (click)="scrollToSection('homes', $event)">Properties</a><a href="#about" (click)="scrollToSection('about', $event)">About</a><a href="#contact" (click)="scrollToSection('contact', $event)">Contact</a></nav>
 		<span>© 2026 AKS PropRealty</span>
 	</footer>
 </div>

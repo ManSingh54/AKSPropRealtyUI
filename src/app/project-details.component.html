@@ -1,0 +1,108 @@
+@if (project; as property) {
+	<div class="project-detail-page">
+		<header class="detail-header">
+			<a class="detail-brand" href="/" (click)="navigateHomeTo('home', $event)" aria-label="AKS PropRealty home">
+				<img src="assets/Logo1.png" alt="AKS PropRealty">
+			</a>
+			<nav aria-label="Project page navigation">
+				<a href="/" (click)="navigateHomeTo('homes', $event)">All properties</a>
+				<a class="detail-header-cta" href="/" (click)="navigateHomeTo('contact', $event)">Talk to an advisor <span aria-hidden="true">↗</span></a>
+			</nav>
+		</header>
+
+		<section class="detail-hero" [style.backgroundImage]="'linear-gradient(90deg, rgba(16,25,38,.82), rgba(16,25,38,.22)), url(&quot;' + property.image + '&quot;)'">
+			<div class="detail-hero-copy">
+				<div class="detail-breadcrumb"><a href="/" (click)="navigateHomeTo('home', $event)">Home</a><span aria-hidden="true">/</span><a href="/" (click)="navigateHomeTo('homes', $event)">Properties</a><span aria-hidden="true">/</span><span>{{ property.name }}</span></div>
+				<p class="detail-eyebrow">{{ property.developer }}</p>
+				<h1>{{ property.name }}</h1>
+				<p class="detail-location">{{ property.area }}</p>
+				<p class="detail-summary">{{ property.description }}</p>
+				<div class="detail-hero-actions">
+					<a class="detail-primary-action" href="/" (click)="navigateHomeTo('contact', $event)">Enquire about this project <span aria-hidden="true">↗</span></a>
+					<a class="detail-secondary-action" href="tel:+919811002135">Call AKS PropRealty</a>
+				</div>
+			</div>
+			<span class="detail-image-note">Representative image</span>
+		</section>
+
+		<main class="detail-content">
+			<section class="detail-facts" aria-label="Project overview facts">
+				@for (fact of property.facts; track fact.label) {
+					<div class="detail-fact">
+						<span>{{ fact.label }}</span>
+						<strong>{{ fact.value }}</strong>
+					</div>
+				}
+			</section>
+
+			<div class="detail-layout">
+				<article class="detail-main-column">
+					<section class="detail-section" id="overview">
+						<p class="detail-eyebrow">PROJECT OVERVIEW</p>
+						<h2>About {{ property.name }}</h2>
+						<p>{{ property.overview }}</p>
+					</section>
+
+					@if (property.highlights.length) {
+						<section class="detail-section">
+							<p class="detail-eyebrow">AT A GLANCE</p>
+							<h2>Project highlights</h2>
+							<ul class="detail-feature-list">
+								@for (highlight of property.highlights; track highlight) {
+									<li><span aria-hidden="true">✓</span>{{ highlight }}</li>
+								}
+							</ul>
+						</section>
+					}
+
+					@if (property.amenities.length) {
+						<section class="detail-section">
+							<p class="detail-eyebrow">LIFESTYLE</p>
+							<h2>Amenities and facilities</h2>
+							<div class="detail-amenities">
+								@for (amenity of property.amenities; track amenity) {
+									<div><span aria-hidden="true">✦</span>{{ amenity }}</div>
+								}
+							</div>
+						</section>
+					}
+
+					@if (property.connectivity.length) {
+						<section class="detail-section">
+							<p class="detail-eyebrow">LOCATION</p>
+							<h2>Connectivity and surroundings</h2>
+							<ul class="detail-feature-list">
+								@for (connection of property.connectivity; track connection) {
+									<li><span aria-hidden="true">↗</span>{{ connection }}</li>
+								}
+							</ul>
+						</section>
+					}
+				</article>
+
+				<aside class="detail-enquiry-card">
+					<p class="detail-eyebrow">NEED MORE INFORMATION?</p>
+					<h2>Explore {{ property.name }}</h2>
+					<p>Ask our team for current pricing, floor plans, availability and a site visit.</p>
+					<a class="detail-primary-action" href="/" (click)="navigateHomeTo('contact', $event)">Request project details <span aria-hidden="true">↗</span></a>
+					<a class="detail-whatsapp-action" [href]="whatsappHref" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+					<span class="detail-phone">+91 98110 02135</span>
+				</aside>
+			</div>
+
+			<p class="detail-disclaimer">Project information is summarized from available developer materials and may change. Confirm the latest approved plans, RERA information, specifications, prices and availability with the developer before making a purchase decision. Images are representative.</p>
+			<p class="detail-source-links">
+				<span>Information sources:</span>
+				<a [href]="property.sourceUrl" target="_blank" rel="noopener noreferrer">Project / developer website</a>
+				<a href="https://www.up-rera.in/" target="_blank" rel="noopener noreferrer">UP RERA portal</a>
+			</p>
+			<a class="detail-back-link" href="/" (click)="navigateHomeTo('homes', $event)">← Back to all properties</a>
+		</main>
+	</div>
+} @else {
+	<main class="detail-not-found">
+		<p class="detail-eyebrow">PROPERTY NOT FOUND</p>
+		<h1>This project isn’t available.</h1>
+		<a class="detail-primary-action" href="/" (click)="navigateHomeTo('homes', $event)">Browse all properties</a>
+	</main>
+}
