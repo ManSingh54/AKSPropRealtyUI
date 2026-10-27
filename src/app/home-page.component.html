@@ -12,11 +12,12 @@
 			<span></span><span></span><span></span>
 		</button>
 		<nav class="main-nav" [class.is-open]="menuOpen" aria-label="Main navigation">
-			<a href="#home" (click)="scrollToSection('home', $event); menuOpen = false">Home</a>
+			<a routerLink="/" (click)="menuOpen = false">Home</a>
 			<a href="#homes" (click)="scrollToSection('homes', $event); menuOpen = false">Properties</a>
-			<a href="#about" (click)="scrollToSection('about', $event); menuOpen = false">About us</a>
+			<!-- <a href="#about" (click)="scrollToSection('about', $event); menuOpen = false">About us</a> -->
+			<a routerLink="/about-us" (click)="menuOpen = false">About us</a>
 			<a href="#services" (click)="scrollToSection('services', $event); menuOpen = false">Why AKS</a>
-			<a href="#contact" (click)="scrollToSection('contact', $event); menuOpen = false">Contact</a>
+			<a routerLink="/contact-us" (click)="menuOpen = false">Contact</a>
 		</nav>
 		<a class="header-cta" href="#contact" (click)="scrollToSection('contact', $event)">Enquire now <span aria-hidden="true">↗</span></a>
 	</header>
@@ -64,7 +65,7 @@
 				<a class="section-link" href="#contact" (click)="scrollToSection('contact', $event)">{{ filteredProjects.length }} projects across 3 locations <span aria-hidden="true">↗</span></a>
 			</div>
 			<div class="floating-contact-actions" aria-label="Contact AKS PropRealty">
-				<a class="floating-contact-action whatsapp-action" href="https://wa.me/919811002135?text=Hello%20AKS%20PropRealty%2C%20I%20am%20interested%20in%20your%20projects" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
+				<a class="floating-contact-action whatsapp-action" href="https://wa.me/918505801314?text=Hello%20AKS%20PropRealty%2C%20I%20am%20interested%20in%20your%20projects" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp">
 					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .1 5.4.1 12c0 2.1.6 4.2 1.7 6L0 24l6.2-1.6a12 12 0 0 0 5.9 1.5h.1c6.6 0 12-5.4 12-12 0-3.2-1.3-6.2-3.7-8.4ZM12.1 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.3-.4a9.8 9.8 0 1 1 8.4 4.6Zm5.4-7.4c-.3-.2-1.7-.9-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.5-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.3 1 2.7 1.1 2.9c.2.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3Z"/></svg>
 				</a>
 				<a class="floating-contact-action email-action" href="#contact" (click)="scrollToSection('contact', $event)" aria-label="Contact us">
@@ -112,15 +113,19 @@
 			<div class="service-grid">
 				<article><span>01</span><h3>Understand your needs</h3><p>Start with your preferred location, budget, and the kind of home you have in mind.</p></article>
 				<article><span>02</span><h3>Compare your options</h3><p>Review relevant homes and their key details before deciding which ones to explore.</p></article>
-				<article><span>03</span><h3>Plan your next step</h3><p>Get help arranging a conversation or visit and move forward at your own pace.</p></article>
+				<article><span>03</span><h3>Local Expertise</h3><p>Deep knowledge of Noida, Greater Noida, and Yamuna Expressway projects ensures you get the best options.</p></article>
+				<article><span>04</span><h3>Customer First</h3><p>Your needs drive our recommendations. We listen, understand, and guide you at every step.</p></article>
+				<article><span>05</span><h3>Trusted Developers/Transparency</h3><p>We partner only with reputed builders and verified projects, giving you peace of mind. Clear communication, honest pricing, and no hidden surprises.</p></article>
+				<article><span>06</span><h3>End‑to‑End Support</h3><p>From property search to site visits, documentation, and closing — we handle it all.</p></article>
+				<article><span>07</span><h3>Plan your next step</h3><p>Get help arranging a conversation or visit and move forward at your own pace.</p></article>
 			</div>
 		</section>
 
 		<section class="contact-section" id="contact" aria-labelledby="contact-title">
-			<div class="contact-copy"><p class="eyebrow">LET'S TALK PROPERTY</p><h2 id="contact-title">Looking for a home<br>in <em>Noida NCR?</em></h2><p>Share your details and our team can help you explore the options.</p><a href="tel:+919811002135" class="contact-phone">+91 98110 2135 <span aria-hidden="true">↗</span></a></div>
-			<form class="contact-form" (submit)="submitInquiry($event)">
+				<div class="contact-copy"><p class="eyebrow">LET'S TALK PROPERTY</p><h2 id="contact-title">Looking for a home<br>in <em>Noida NCR?</em></h2><p>Share your details and our team can help you explore the options.</p><a href="tel:+918505801314" class="contact-phone">+91 850580 1314 <span aria-hidden="true">↗</span></a></div>
+				<form class="contact-form" (submit)="submitInquiry($event)">
 				<label>Your name<input name="name" autocomplete="name" placeholder="Enter your name" required></label>
-				<label>Phone number<input name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+() -]{10,}" placeholder="+91 98110 2135" required></label>
+				<label>Phone number<input name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+() -]{10,}" placeholder="+91 850580 1314" required></label>
 				<button class="form-button" type="submit">Request a call <span aria-hidden="true">↗</span></button>
 				<p class="form-feedback" aria-live="polite">{{ inquiryMessage || 'Your details are not submitted online yet. Call us to connect.' }}</p>
 			</form>

@@ -1,0 +1,70 @@
+<main class="contact-page">
+  <header class="contact-header">
+    <a routerLink="/" aria-label="AKS PropRealty home">
+      <img src="assets/Logo1.png" alt="AKS PropRealty">
+    </a>
+    <a class="home-link" routerLink="/">Back to home ↗</a>
+  </header>
+
+  <section class="contact-content" aria-labelledby="contact-title">
+    <p class="eyebrow">LET'S TALK PROPERTY</p>
+    <h1 id="contact-title">How can we help<br><em>you find home?</em></h1>
+    <p class="intro">
+      Tell us what you are looking for. Our local team can help you explore properties across Noida and Yamuna Expressway.
+    </p>
+  </section>
+
+  <section class="contact-main">
+    <!-- Left side: Contact details -->
+    <div class="contact-info">
+      <div class="info-box">
+        <h3>📍 Address</h3>
+        <p>AKS PropRealty, B-2002 4th Floor, Tower-2, NX One, Noida  Extension, Uttar Pradesh</p>
+         <!-- Front of Gaur City Center Mall, Noida  Extension, Uttar Pradesh -->
+      </div>
+      <div class="info-box">
+        <h3>📞 Phone</h3>
+        <p><a href="tel:+918505801314">+91 8505801314</a></p>
+      </div>
+      <div class="info-box">
+        <h3>✉️ Email</h3>
+<p>
+  <a href="mailto:Abhisheksaxena3257&#64;gmail.com">Abhisheksaxena3257&#64;gmail.com</a>
+</p>
+
+      </div>
+    <div class="info-box social-box">
+  <h3>🌐 Social Media</h3>
+  <div class="social-links">
+    <a href="https://www.facebook.com/share/1FtFjfk69A/" target="_blank" class="facebook-link">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/the.akspropreality?rpxt=M2ptNGgwZ2NjbTdv" target="_blank" class="instagram-link">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+</div>
+
+    </div>
+
+    <!-- Right side: Inquiry form -->
+    <div class="contact-form">
+      <h2>Send Us Your Inquiry</h2>
+      <form (ngSubmit)="sendInquiry()" #inquiryForm="ngForm">
+        <div class="form-group">
+          <input type="text" name="name" [(ngModel)]="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" [(ngModel)]="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" name="phone" [(ngModel)]="phone" placeholder="Your Phone" required>
+        </div>
+        <div class="form-group">
+          <textarea name="message" [(ngModel)]="message" placeholder="Your Message" rows="5" required></textarea>
+        </div>
+        <button type="submit">Submit Inquiry</button>
+      </form>
+    </div>
+  </section>
+</main>

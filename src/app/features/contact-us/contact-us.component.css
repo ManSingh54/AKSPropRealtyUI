@@ -1,0 +1,186 @@
+.contact-page {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.contact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.contact-header img {
+  height: 60px;
+}
+
+.home-link {
+  color: #e67e22;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.home-link:hover {
+  text-decoration: underline;
+}
+
+.contact-content {
+  text-align: center;
+  padding: 20px 20px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #888;
+  letter-spacing: 2px;
+}
+
+.contact-content h1 {
+  font-size: 35px;
+  margin: 20px 0;
+}
+
+.contact-content em {
+  color: #e67e22;
+  font-style: normal;
+}
+
+.intro {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Two-column layout */
+.contact-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 40px auto;
+  max-width: 1200px;
+  gap: 40px;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.info-box {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.contact-form {
+  flex: 1;
+  padding: 40px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+.contact-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button {
+  background: #e67e22;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background: #d35400;
+}
+
+/* Social media links */
+.facebook-link {
+  color: #3b5998;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.facebook-link:hover {
+  text-decoration: underline;
+}
+
+.instagram-link {
+  color: #E1306C;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.instagram-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive layout for mobile */
+@media (max-width: 768px) {
+  .contact-main {
+    flex-direction: column;
+  }
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;   /* square button */
+  height: 50px;
+  border-radius: 50%; /* round icons */
+  transition: transform 0.3s ease;
+}
+
+/* Facebook icon */
+.facebook-link {
+  background-color: #1877F2; /* official Facebook blue */
+  color: white;
+  font-size: 24px; /* bigger icon */
+}
+.facebook-link:hover {
+  transform: scale(1.1);
+}
+
+/* Instagram icon */
+.instagram-link {
+  background-color: #E1306C; /* official Instagram pink */
+  color: white;
+  font-size: 24px; /* bigger icon */
+}
+.instagram-link:hover {
+  transform: scale(1.1);
+}
+
+/* Icon itself */
+.social-links i {
+  font-size: 24px; /* bigger icon size */
+}
+
