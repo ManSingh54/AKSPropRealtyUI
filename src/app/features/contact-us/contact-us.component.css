@@ -16,7 +16,7 @@
 }
 
 .home-link {
-  color: #e67e22;
+  color: #8e1727;
   text-decoration: none;
   font-weight: bold;
 }
@@ -43,7 +43,7 @@
 }
 
 .contact-content em {
-  color: #e67e22;
+  color: #8e1727;
   font-style: normal;
 }
 
@@ -102,7 +102,7 @@ input, textarea {
 }
 
 button {
-  background: #e67e22;
+  background: #8e1727;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -113,7 +113,7 @@ button {
 }
 
 button:hover {
-  background: #d35400;
+  background: #e17272;
 }
 
 /* Social media links */
