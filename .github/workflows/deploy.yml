@@ -1,10 +1,10 @@
-name: Angular CI CD - GoDaddy Deployment
+
+name: Angular CI CD - GoDaddy
 
 on:
   push:
     branches:
       - main
-
   workflow_dispatch:
 
 jobs:
